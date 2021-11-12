@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="path/to/vanilla.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="css\pages-css.css">
+    <title>NewsApp</title>    
+               
+</head>
+<body class="body">
+  <div class="navigation">
+    <div class="overlap-group1">
+      <div class="navbar">
+        <form>
+         <h2> <input type="button" class="home-button" value="News App" onClick='location.href="index.html"'></h2>
+          </form>
+          <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+            <ul class="menu__box">
+              <li>
+                <div class="dropdown">
+                  <button class="dropbtn"><h5>Categories</h5></button>
+                  <div  class="dropdown-content">
+                    <a class="menu__item2" href="Pages\Sports.html" ><h6>Sport</h6></a>
+                    <a class="menu__item2" href="Pages\world.html" ><h6>World</h6></a>
+                    <a class="menu__item2" href="Pages\covid.html" ><h6>Covid</h6></a>
+                    <a class="menu__item2" href="Pages\Business.html" ><h6>Business</h6></a>
+                    <a class="menu__item2" href="Pages\Politics.html" ><h6>Politics</h6></a>
+                    <a class="menu__item2" href="Pages\Science.html" ><h6>Science</h6></a>
+                    <a class="menu__item2" href="Pages\religion.html" ><h6>Religion</h6></a>
+                    <a class="menu__item2" href="Pages\health.html" ><h6>Health</h6></a>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="share-btn">
+                <button class="share"><a class="sharofanchik" href="#"><h5>Trending news</h5></a>
+                </button>
+                </div>
+              </li>
+          
+            </ul>
+          </div>
+      </div>
+      <div class="overlap-group">
+        <p> <input type="search" name="q" class="text-1" placeholder="Type something to start search"> </p>
+        <button type="submit"><img class="button-img" src="img\pngwing.com.png" /></button>
+      </div>
+    </div>
+  </div>
+  
+      
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+</body>
+</html>

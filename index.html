@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+<script src="path/to/vanilla.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="css\main-css.css">
+<script src="js\brain.js"></script>
+    <title>NewsApp</title>    
+               
+</head>
+<body class="body">
+  <div class="preloader">
+    <div class="preloader__row">
+      <div class="preloader__item"></div>
+      <div class="preloader__item"></div>
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+      document.body.classList.add('loaded_hiding');
+      window.setTimeout(function () {
+        document.body.classList.add('loaded');
+        document.body.classList.remove('loaded_hiding');
+      }, 1000);
+    }
+  </script>
+  <div class="navigation">
+    <div class="overlap-group1">
+      <div class="navbar">
+        <form>
+         <h2> <input type="button" class="home-button" value="News App" onClick='location.href="index.html"'></h2>
+          </form>
+          <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+            <ul class="menu__box">
+              <li>
+                <div class="dropdown">
+                  <button class="dropbtn"><h5>Categories</h5></button>
+                  <div  class="dropdown-content">
+                    <a class="menu__item2" href="Pages\Sports.html" ><h6>Sport</h6></a>
+                    <a class="menu__item2" href="Pages\world.html" ><h6>World</h6></a>
+                    <a class="menu__item2" href="Pages\covid.html" ><h6>Covid</h6></a>
+                    <a class="menu__item2" href="Pages\Business.html" ><h6>Business</h6></a>
+                    <a class="menu__item2" href="Pages\Politics.html" ><h6>Politics</h6></a>
+                    <a class="menu__item2" href="Pages\Science.html" ><h6>Science</h6></a>
+                    <a class="menu__item2" href="Pages\religion.html" ><h6>Religion</h6></a>
+                    <a class="menu__item2" href="Pages\health.html" ><h6>Health</h6></a>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="share-btn">
+                <button class="share"><a class="sharofanchik" href="Pages\Trending.html"><h5>Trending news</h5></a>
+                </button>
+                </div>
+              </li>
+          
+            </ul>
+          </div>
+      </div>
+      <div class="overlap-group">
+        <form>
+          <input class="place_for_search" type="text" id="text-to-find" value="" placeholder="Search" autofocus> 
+          <input class="button_for_turn_back" type="button" onclick="javascript: FindOnPage('text-to-find',false); return false;" value=" " title="Отменить поиск">
+          <input class="button_for_search" type="submit" onclick="javascript: FindOnPage('text-to-find',true); return false;" value=" " >
+    </form>
+        <button type="submit"><img class="button-img" src="img\pngwing.com.png" /></button>
+        
+    <script>
+    var input,search,pr,result,result_arr, locale_HTML, result_store;
+
+locale_HTML = document.body.innerHTML;   // сохраняем в переменную весь body (Исходный)
+
+function FindOnPage(name, status) {
+
+	input = document.getElementById(name).value; //получаем значение из поля в html
+	
+	if(input.length<3&&status==true) {
+		alert('Для поиска вы должны ввести три или более символов');
+		function FindOnPageBack() { document.body.innerHTML = locale_HTML; }   //обнуляем стили
+	}
+        
+        if(input.length>=3)
+	{
+              function FindOnPageGo() {
+                     search = '/'+input+'/g';  //делаем из строки регуярное выражение
+		     pr = document.body.innerHTML;   // сохраняем в переменную весь body
+		     result = pr.match(/>(.*?)</g);  //отсекаем все теги и получаем только текст
+		     result_arr = [];   //в этом массиве будем хранить результат работы (подсветку)
+
+                     for(var i=0; i<result.length;i++) {
+		        result_arr[i] = result[i].replace(eval(search), '<span style="background-color:yellow;">'+input+'</span>'); //находим нужные элементы, задаем стиль и сохраняем в новый массив
+			}
+		     for(var i=0; i<result.length;i++) {
+			pr=pr.replace(result[i],result_arr[i])  //заменяем в переменной с html текст на новый из новогом ассива
+			}
+		     document.body.innerHTML = pr;  //заменяем html код
+              }
+        }
+        function FindOnPageBack() { document.body.innerHTML = locale_HTML; }   //обнуляем стили
+        if(status) { FindOnPageBack(); FindOnPageGo(); } //чистим прошлое и Выделяем найденное
+	if(!status) { FindOnPageBack(); } //Снимаем выделение
+}
+    </script>
+ 
+      </div>
+      
+     
+    </div>
+  </div>
+  <div class="card-latest">
+  <h1 class="title2"><a style="color: black" href="#">long established</a></h1>
+    
+  <a style="color: black" href="#"><img
+      class="image-1"
+      src="img\image-1@2x.png"
+    />
+    </a>
+    <div><p class="text-2">
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+      layout. The point of using Lorem Ipsum is that....
+    </p></div>
+    <div class="name">May 20th 2020</div>
+    <div class="read-more"><a  style="color: black"  href="#">Read more</a></div>
+  </div>
+  <div class="card-panel-left">
+    <div class="long-established2"><a style="color: black" href="#">long established</a></div>
+    <div class="name2">May 20th 2020</div>
+    <div class="read-more2"><a style="color: black" href="#">Read more</a></div>
+    <a style="color: black" href="#"><img
+      class="image-2"
+      src="img\image-2@2x.png"
+    /></a>
+    <p class="text-3">
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+      layout. The point of using Lorem Ipsum is that....
+    </p>
+  </div>
+  <div class="card-panel-centre">
+    <div class="long-established3"><a style="color: black" href="#">long established</a></div>
+    <div class="name3">May 20th 2020</div>
+    <div class="read-more3"><a style="color: black" href="#">Read more</a></div>
+    <p class="text-4">
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+      layout. The point of using Lorem Ipsum is that....
+    </p>
+    <a style="color: black" href="#"><img
+      class="image-4"
+      src="img\image-3@2x.png"
+    /></a>
+  </div>
+  <div class="card-panel-right">
+    <div class="long-established3"><a style="color: black" href="#">long established</a></div>
+    <div class="name3">May 20th 2020</div>
+    <div class="read-more3"><a style="color: black" href="#">Read more</a></div>
+    <p class="text-4">
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+      layout. The point of using Lorem Ipsum is that....
+    </p>
+    <a style="color: black" href="#"><img
+      class="image-4"
+      src="img\image-5@2x.png"
+    /></a>
+  </div>
+  <div class="card-panel-left-down">
+    <div class="long-established3"><a style="color: black" href="#">long established</a></div>
+    <div class="name3">May 20th 2020</div>
+    <div class="read-more3"><a style="color: black" href="#">Read more</a></div>
+    <p class="text-4">
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+      layout. The point of using Lorem Ipsum is that....
+    </p>
+    <a style="color: black" href="#"><img
+      class="image-4"
+      src="img\image-2@2x.png"
+    /></a>
+  </div>
+  <div class="card-panel-centre-down">
+    <div class="long-established3"><a style="color: black" href="#">long established</a></div>
+    <div class="name3">May 20th 2020</div>
+    <div class="read-more3"><a style="color: black" href="#">Read more</a></div>
+    <p class="text-4">
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+      layout. The point of using Lorem Ipsum is that....
+    </p>
+    <a style="color: black" href="#"><img
+      class="image-4"
+      src="img\image-3@2x.png"
+    /></a>
+  </div>
+  <div class="card-panel-right-down">
+    <div class="long-established3"><a style="color: black" href="#">long established</a></div>
+    <div class="name3">May 20th 2020</div>
+    <div class="read-more3"><a style="color: black" href="#">Read more</a></div>
+    <p class="text-4">
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+      layout. The point of using Lorem Ipsum is that....
+    </p>
+    <a style="color: black" href="#"><img
+      class="image-4"
+      src="img\image-5@2x.png"
+    /></a>
+  </div>
+  <div class="footer">
+    <p class="text-5">
+      <span class="inter">News App</span><span class="span1"> 2021 copyright all rights reserved</span>
+    </p>
+    <img
+      class="line-1"
+      src="line-1.png"
+    />
+  </div>
+  
+  <a class="back_to_top" title="Scroll-up">Scroll to top</a>
+ <script> (function() {
+    'use strict';
+  
+    function trackScroll() {
+      var scrolled = window.pageYOffset;
+      var coords = document.documentElement.clientHeight;
+  
+      if (scrolled > coords) {
+        goTopBtn.classList.add('back_to_top-show');
+      }
+      if (scrolled < coords) {
+        goTopBtn.classList.remove('back_to_top-show');
+      }
+    }
+  
+    function backToTop() {
+      if (window.pageYOffset > 0) {
+        window.scrollBy(0, -80);
+        setTimeout(backToTop, 0);
+      }
+    }
+  
+    var goTopBtn = document.querySelector('.back_to_top');
+  
+    window.addEventListener('scroll', trackScroll);
+    goTopBtn.addEventListener('click', backToTop);
+  })(); 
+  </script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+</body>
+</html>
